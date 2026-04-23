@@ -1,0 +1,2 @@
+class Fileapp < ApplicationRecord
+end
