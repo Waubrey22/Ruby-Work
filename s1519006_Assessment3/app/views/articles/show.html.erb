@@ -1,0 +1,38 @@
+<h1><%= @article.title %></h1>
+<li style="font-size: larger">
+  <%= link_to 'Home', {:action => 'index'} %>
+  <%= link_to 'News', {:action => 'news'} %>
+  <%= link_to 'Admin', {:action => 'adminlog'} %>
+</li><br>
+<!-- Displays information relevant to the article -->
+<strong>Genre: </strong><span><%= @genre.title %></span><br>
+<strong>Source: </strong><span><%= @article.publisher %></span><br>
+<strong>Last Updated: </strong><span><%= @article.updated_at.inspect %></span><br>
+<strong>Body: </strong>
+<p><%= @article.body %></p>
+
+<!-- Displays all comments relevant to the article -->
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <P>
+    <strong><%= comment.commented %>: </strong><%= comment.body %>
+  </P>
+<% end %>
+
+<!-- Form to add a comment to the article -->
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commented %><br>
+    <%= form.text_field :commented %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back", articles_path %>

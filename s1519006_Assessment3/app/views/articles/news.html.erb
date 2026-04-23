@@ -1,0 +1,20 @@
+<h1>S1519006 News Management System</h1>
+<li style="font-size: larger">
+  <%= link_to 'Home', {:action => 'index'} %>
+  <%= link_to 'News', {:action => 'news'} %>
+  <%= link_to 'Admin', {:action => 'adminlog'} %>
+</li><br>
+
+<!-- Displays all articles by genre -->
+<% @genres.each do |genre| %>
+  <h2><u>Category: <%= genre.title %></u></h2>
+  <% @articles.each do |article| %>
+    <% if genre.id == article.genre_id %>
+      <h2><%= article.title %></h2>
+      <%= article.body.slice(0..60) %>
+      <a href="/articles/<%= article.id %>" style="background: lightgray">
+        READ MORE >>
+      </a>
+    <% end %>
+  <% end %>
+<% end %>

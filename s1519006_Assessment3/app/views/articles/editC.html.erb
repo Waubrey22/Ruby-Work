@@ -1,0 +1,5 @@
+<%= form_for @genre do |genre| %>
+  <!-- Form so user can enter items for edited category -->
+  <p><%= genre.label :title %> <%= genre.text_field :title %>
+  <p><%= submit_tag "Update Category" %>
+<% end %>

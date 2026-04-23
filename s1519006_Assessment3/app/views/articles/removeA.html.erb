@@ -1,0 +1,9 @@
+<h2>Deleting Article</h2>
+<%= form_for @article, method: :delete do %>
+  <!-- Form to display contents of article before deletion -->
+  <p>Title: <%= @article.title %></p>
+  <p>Body: <%= @article.body %></p>
+  <p>Genre: <%= @genre.title %></p>
+  <p>Publisher: <%= @article.publisher %></p>
+  <p><%= submit_tag "Delete Article", onclick: "return confirm('Are you sure?')" %>
+<% end %>

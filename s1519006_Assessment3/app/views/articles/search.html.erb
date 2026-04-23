@@ -1,0 +1,15 @@
+<h1>Search results for "<%= params[:term] %>"</h1>
+<li style="font-size: larger">
+  <%= link_to 'Home', {:action => 'index'} %>
+  <%= link_to 'News', {:action => 'news'} %>
+  <%= link_to 'Admin', {:action => 'adminlog'} %>
+</li><br>
+
+<!-- Displays all articles found in the array -->
+<% @foundArticles.each do |article| %>
+  <h2><u><%= article.title %></u></h2>
+  <%= article.body.slice(0..60) %>
+  <a href="/articles/<%= article.id %>" style="background: lightgray">
+    READ MORE >>
+  </a>
+<% end %>

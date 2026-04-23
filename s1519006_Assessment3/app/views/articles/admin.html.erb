@@ -1,0 +1,25 @@
+<h1>S1519006 News Management System - Admin Screen</h1>
+<li style="font-size: larger">
+  <%= link_to 'Log Off', {:action => 'index'} %>
+  <%= link_to 'New Article', {:action => 'newA'} %>
+  <%= link_to 'New Category', {:action => 'newC'} %>
+</li><br>
+
+<!-- Admin main page, orders by genre items -->
+<% @genres.each do |genre| %>
+  <h2><u>Category: <%= genre.title %> </u> <%= link_to "edit", {:action => 'editC', :id => genre.id}%> | <%= link_to "delete", {:action => 'removeC', :id => genre.id}%></h2>
+  <% @articles.each do |article| %>
+    <% if genre.id == article.genre_id %>
+      <h2><%= article.title %></h2>
+      <li>
+        <%= link_to "hide", {:action => 'hide', :id => article.id} %> |
+        <%= link_to "edit", {:action => 'editA', :id => article.id} %> |
+        <%= link_to "delete", {:action => 'removeA', :id => article.id, } %>
+      </li>
+      <%= article.body.slice(0..60) %>
+      <a href="/articles/<%= article.id %>" style="background: lightgray">
+        READ MORE >>
+      </a>
+    <% end %>
+  <% end %>
+<% end %>

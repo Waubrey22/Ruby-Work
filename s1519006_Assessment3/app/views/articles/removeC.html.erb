@@ -1,0 +1,6 @@
+<h2>Deleting Category</h2>
+<%= form_for @genre, method: :delete do %>
+  <!-- Form to display contents of category before deletion -->
+  <p>Title: <%= @genre.title %></p>
+  <p><%= submit_tag "Delete Category", onclick: "return confirm('Are you sure?')" %>
+<% end %>

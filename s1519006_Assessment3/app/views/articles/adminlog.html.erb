@@ -1,0 +1,17 @@
+<h1>S1519006 News Management System</h1>
+<li style="font-size: larger">
+  <%= link_to 'Home', {:action => 'index'} %>
+  <%= link_to 'News', {:action => 'news'} %>
+  <%= link_to 'Admin', {:action => 'adminlog'} %>
+</li><br>
+
+<!-- Login form -->
+<%= form_tag "/login" do %>
+  <div>
+    <%= label_tag(:uname, "Username") %>
+    <%= text_field_tag(:uname, nil) %>
+    <%= label_tag(:pword, "Password") %>
+    <%= text_field_tag(:pword, nil) %>
+  </div>
+  <%= submit_tag "login" %>
+<% end %>

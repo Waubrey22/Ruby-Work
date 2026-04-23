@@ -1,0 +1,28 @@
+<h1>S1519006 News Management System</h1>
+<li style="font-size: larger">
+  <%= link_to 'Home', {:action => 'index'} %>
+  <%= link_to 'News', {:action => 'news'} %>
+  <%= link_to 'Admin', {:action => 'adminlog'} %>
+</li><br>
+
+<%= form_tag "search" do %>
+  <div>
+    <!-- Form to search for term in articles -->
+    <%= label_tag(:term, "Enter the search term") %>
+    <%= text_field_tag(:term, nil) %>
+  </div>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<!-- Uses array of presorted hash to display the 4 most recently updated articles -->
+<% count = 0 %>
+<% @articlesSorted.each do |article| %>
+  <h2><u><%= article.title %></u></h2>
+  <!-- Cuts off the article body at 60 characters -->
+  <%= article.body.slice(0..60) %>
+  <a href="/articles/<%= article.id %>" style="background: lightgray">
+    READ MORE >>
+    <% count += 1 %>
+  </a>
+  <%  break if count == 4 %>
+<% end %>

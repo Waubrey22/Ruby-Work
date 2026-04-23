@@ -1,0 +1,8 @@
+<%= form_for @article do |article| %>
+  <!-- Form so user can enter items for edited article -->
+  <p><%= article.label :title %> <%= article.text_field :title %>
+  <p><%= article.label :body %> <%= article.text_area :body %>
+  <p><%= article.label :genre_id %> <%= article.collection_select :genre_id, Genre.all, :id, :title %>
+  <p><%= article.label :publisher %> <%= article.text_field :publisher %>
+  <p><%= submit_tag "Update Article" %>
+<% end %>
