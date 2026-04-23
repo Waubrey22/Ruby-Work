@@ -1,0 +1,7 @@
+#countLoop = 0
+      #while countLoop < arrFoundDoc.size
+        #  if arrFoundDoc[countLoop] == arr[arr.size - 1] and arrFoundSSN[countLoop] == word
+        # wordFound = true
+      #end
+      #countLoop += 1
+      #end
